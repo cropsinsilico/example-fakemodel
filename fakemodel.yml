@@ -1,0 +1,8 @@
+model:
+  name: FakeModel
+  language: python
+  args: ./fakemodel.py
+  inputs:
+    - photosynthesis_rate
+  outputs:
+    - growth_rate
