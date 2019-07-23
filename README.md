@@ -45,9 +45,9 @@ photosynthesis_rate | umol/m**2/s | float     | Input/input.txt | The photosynth
 
 ### Outputs
 
-Name        | Units | Data Type | Description
------------ | ----- | --------- | -----------
-growth_rate | cm/s  | float     | The vertical growth rate.
+Name        | Units | Data Type | File/Argument     | Description
+----------- | ----- | --------- | ----------------- | -----------
+growth_rate | cm/s  | float     | Output/output.txt | The vertical growth rate.
 
 
 ## Tests
