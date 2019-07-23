@@ -1,7 +1,9 @@
 model:
   name: FakeModel
   language: python
-  args: ./fakemodel.py
+  args:
+    - ./src/fakemodel.py
+    - --yggdrasil
   inputs:
     - photosynthesis_rate
   outputs:

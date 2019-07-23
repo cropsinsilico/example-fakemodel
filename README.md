@@ -20,10 +20,18 @@ FakeModel is a fake model that dosn't do anything.
 
 - yggdrasil
 
-## Running the model on the provided example data (without yggdrasil)
+## Running the model on the provided example data
+
+### Without yggdrasil
 
 ```
 python src/fakemodel.py Input/input.txt Output/output.txt
+```
+
+### With yggdrasil
+
+```
+yggrun fakemodel.yml fakemodel_files.yml
 ```
 
 ## Model Inputs/Outputs

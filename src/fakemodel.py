@@ -55,6 +55,8 @@ if __name__ == '__main__':
         output_writer.writerow(['# cm/s'])
         for prate in input_reader:
             grate = calculate_growth(*prate)
+            print('growth: photosynthesis rate = %f ---> growth rate = %f' % (
+                prate[0], grate))
             output_writer.writerow([grate])
 
         input_fd.close()
