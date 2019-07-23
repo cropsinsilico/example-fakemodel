@@ -16,9 +16,17 @@ FakeModel is a fake model that dosn't do anything.
 
 ![img](http://latex.codecogs.com/svg.latex?r_{growth}=\frac{r_{photo}}{2})
 
-## Requirements
+## Installation
+
+### Requirements
 
 - yggdrasil
+
+### Installation steps
+
+1. Step 1
+1. Step 2
+1. ...
 
 ## Running the model on the provided example data
 
