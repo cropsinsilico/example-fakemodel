@@ -14,7 +14,7 @@ FakeModel is a fake model that dosn't do anything.
 
 ## Relevant Equations
 
-![img](http://latex.codecogs.com/svg.latex?r_{growth}=\frac{r_{photo}}{2}
+![img](http://latex.codecogs.com/svg.latex?r_{growth}=\frac{r_{photo}}{2})
 
 ## Requirements
 
