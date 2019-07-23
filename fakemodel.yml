@@ -3,6 +3,9 @@ model:
   language: python
   args: ./fakemodel.py
   inputs:
-    - photosynthesis_rate
+    - a
+    - b
+    - c
+    - d
   outputs:
-    - growth_rate
+    - e

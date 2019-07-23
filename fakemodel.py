@@ -2,34 +2,54 @@ import sys
 from cis_interface.interface import CisInput, CisOutput
 
 
-def calculate_growth(photosynthesis_rate):
-    r"""Calculate the plant growth rate from the photosynthesis rate.
+def model_calculation(a, b, c, d):
+    r"""Perform the model calculation from several input parameters.
 
     Args:
-        photosynthesis_rate (float): Rate of photosynthesis.
+        a (float): Floating point argument.
+        b (int): Integer argument.
+        c (str): String argument.
+        d (np.ndarray): Array argument.
 
     Returns:
-        float: Growth rate.
+        tuple (np.ndarray, str): Output arguments e & f.
 
     """
-    return 0.5 * photosynthesis_rate
+    e = d[:b].sum() * a
+    f = b * c
+    return e, f
 
 
 if __name__ == '__main__':
-    input = CisInput('photosynthesis_rate')
-    output = CisOutput('growth_rate', '%f\n')
+    inputs = {}
+    outputs = {}
+    for x in ['a', 'b', 'c', 'd']:
+        inputs[x] = CisInput(x)
+    for x in ['e']: #, 'f']:
+        outputs[x] = CisOutput(x)
     
+    args_in = {}
+    args_out = {}
     while True:
-        flag, prate = input.recv()
-        if not flag:
-            print('growth: No more input.')
-            break
-        grate = calculate_growth(*prate)
-        print('growth: photosynthesis rate = %f ---> growth rate = %f' % (
-            prate[0], grate))
-        flag = output.send(grate)
-        if not flag:
-            print('growth: Error sending growth rate.')
-            sys.exit(-1)
+        for x in sorted(inputs.keys()):
+            flag, iarg = inputs[x].recv()
+            if not flag:
+                print('fakemodel: No more input')
+                sys.exit(0)
+            print(x, iarg)
+            if isinstance(iarg, tuple) and (len(iarg) == 1):
+                args_in[x] = iarg[0]
+            else:
+                args_in[x] = iarg
+        args_out['e'], args_out['f'] = model_calculation(
+            args_in['a'], args_in['b'], args_in['c'], args_in['d'])
+        print('fakemodel: a = %s, b = %s, c = %s, d = %s ---> e = %s, d = %s' % (
+                args_in['a'], args_in['b'], args_in['c'], args_in['d'],
+                args_out['e'], args_out['f']))
+        for x in sorted(outputs.keys()):
+            flag = outputs[x].send(args_out[x])
+            if not flag:
+                print('fakemodel: Error sending %s' % x)
+                sys.exit(-1)
 
     sys.exit(0)
