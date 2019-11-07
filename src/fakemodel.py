@@ -32,8 +32,8 @@ if __name__ == '__main__':
                 print('growth: No more input.')
                 break
             grate = calculate_growth(*prate)
-            print('growth: photosynthesis rate = %f ---> growth rate = %f' % (
-                prate[0], grate))
+            print('growth: photosynthesis rate = %s ---> growth rate = %s' % (
+                str(prate[0]), str(grate)))
             flag = output.send(grate)
             if not flag:
                 print('growth: Error sending growth rate.')
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         output_fd = open(args.output_file[0], 'w', newline='')
 
         output = []
-        input_reader = csv.reader(filter(lambda row: row[0]!='#', input_fd),
+        input_reader = csv.reader(filter(lambda row: row[0] != '#', input_fd),
                                   delimiter='\t', quoting=csv.QUOTE_NONNUMERIC)
         output_writer = csv.writer(output_fd, delimiter='\t',
                                    lineterminator='\n')
