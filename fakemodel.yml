@@ -8,3 +8,7 @@ model:
     - photosynthesis_rate
   outputs:
     - growth_rate
+  dependencies:
+    - numpy
+  additional_dependencies:
+    c++: [doxygen]
