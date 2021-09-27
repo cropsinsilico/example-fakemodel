@@ -24,6 +24,7 @@ if __name__ == '__main__':
     if args.yggdrasil:
         from yggdrasil.interface import YggInput, YggOutput
         from yggdrasil.units import add_units
+        from yggdrasil.tools import print_encoded
         input = YggInput('photosynthesis_rate')
         output = YggOutput('growth_rate', '%f\n')
 
@@ -34,8 +35,9 @@ if __name__ == '__main__':
                 break
             grate = calculate_growth(*prate)
             grate *= add_units(1.0, "cm*m**2/umol")
-            print('growth: photosynthesis rate = %s ---> growth rate = %s' % (
-                str(prate[0]), str(grate)))
+            print_encoded(
+                'growth: photosynthesis rate = %s ---> growth rate = %s' % (
+                    str(prate[0]), str(grate)))
             flag = output.send(grate)
             if not flag:
                 print('growth: Error sending growth rate.')
