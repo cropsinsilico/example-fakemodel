@@ -36,8 +36,8 @@ if __name__ == '__main__':
             grate = calculate_growth(*prate)
             grate *= add_units(1.0, "cm*m**2/umol")
             print_encoded(
-                'growth: photosynthesis rate = %s ---> growth rate = %s' % (
-                    str(prate[0]), str(grate)))
+                f'growth: photosynthesis rate = {prate[0]} ---> '
+                f'growth rate = {grate}')
             flag = output.send(grate)
             if not flag:
                 print('growth: Error sending growth rate.')
